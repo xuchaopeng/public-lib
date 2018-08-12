@@ -31,18 +31,18 @@ PC.Url.getUrlNoParams();
 
 ```
 ├──src
-│   ├──ave                     // 广告库文件
-|   |  |——A360                 //360广告
-|   |  |——Abaidu               //百度联盟
-|   |  |——index.js             //广告库的入口文件
+|   ├──ave                     // 广告库文件
+|   |  ├──A360                 //360广告
+|   |  ├──Abaidu               //百度联盟
+|   |  ├──index.js             //广告库的入口文件
 |   ├──pc
-|   |  |——*.js                 //pc公共方法文件
-|   |  |——index.js             //公共方法库的入口文件
+|   |  ├──*.js                 //pc公共方法文件
+|   |  ├──index.js             //公共方法库的入口文件
 ├──dist                        //wepack打包后文件 
 ├──.gitignore                  // 忽略的文件的配置文件
 ├──package.json                // 项目及工具的依赖配置文件
-|——postcss.config.js            //css3打包兼容性前缀的配置文件
-|——webpack.config.js            //配置
+├──postcss.config.js            //css3打包兼容性前缀的配置文件
+├──webpack.config.js            //配置
 ├──README.md                   // 帮助说明
 ```
 
