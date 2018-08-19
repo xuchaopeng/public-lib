@@ -86,7 +86,7 @@ module.exports = (env = {}) => {
         },
         devServer: {
             contentBase: './',
-            port: '8090'
+            port: '8091'
         },
         plugins: [
             new CleanWebpackPlugin(['dist']),
