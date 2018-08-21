@@ -9,10 +9,9 @@ import	'./A360.less';
 
 const inview = ($cnt,callback) => {
 	const lock = false;
-	const win = $(window).height();
 	const isview = () => {
 		if($cnt.length === 0)return;
-		win = $(window).height();
+		let win = $(window).height();
 		let rect = $cnt[0].getBoundingClientRect();
 		if(rect.top > 0 && rect.top < win){
 			$(document).unbind('scroll',isview);
@@ -24,34 +23,34 @@ const inview = ($cnt,callback) => {
 
 const showurl = (k) => {
 	$.each(k,(i,item)=>{
-		new Image().src = item.replace(/^(http:\/\/)|(https:\/\/)/i,'')
+		new Image().src = item.replace(/^(http:\/\/)|(https:\/\/)/gi,'')
 	})
 }
 
 const viewurl = ($cnt,k) => {
 	inview($cnt,()=>{
-		
+		showurl(k)
 	})
 }
-showurl:function(k){
-                $.each(k, function(i, item) {
-                    new Image().src = item.replace("http:", "");
-                });
-            },
-            viewurl:function($dom,k){
-                var self = this ;
-                self.inview($dom,function(){
-                    self.showurl(k);
-                }) 
-            },
-            clickurl:function(urlobj) {
-                var self = this ;
-                var clktkurlArry = $.extend(true,[],urlobj.clktk);
-                $.each(clktkurlArry, function(i,item) {
-                    $('body').append('<iframe src="' + self.replace360url(item,urlobj) + '" style="display: none;"></iframe>');
-                });
-            },
 
+const replace360url = (item,urlobj) => {
+	return 'http://mini.eastday.com/404.html';
+}
+
+const clickurl  = (urlobj) => {
+	const clktkurlArry = $.extend(true,[],urlobj.clktk);
+	$.each(clktkurlArry,(i,item)=>{
+		$('body').append('<iframe src="' + replace360url(item,urlobj) + '" style="display: none;"></iframe>');
+	})
+}
+
+const template = (o={"a":'xcp',"c":1232}) => {
+	return `<p>我是${o.a},我是一个数字${o.c}</p>
+			<p>我是${o.a},我是一个数字${o.c}</p>
+			我是${o.a},我是一个数字${o.c}
+			`.trim()
+}
 export default {
-	'xcp':'hahah'
+	'xcp':clickurl,
+	template : template
 }
