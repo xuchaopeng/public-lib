@@ -16,8 +16,9 @@ export default{
         const result = Date.parse(nowDate)
         return result;
     },
-    remove(name){
-      localStorage && localStorage.removeItem(name);
+    delete(name){
+      localStorage.removeItem(name);
+      return name;
     },
     /**
      * [设置localstorage,指定当天某个时间点失效,默认当天24:00失效]
@@ -32,7 +33,7 @@ export default{
     	if((expDate.getTime() > Number(value._timestamp)){
     		//过期了
     		localStorage.removeItem(name);
-    		localStorage.setItem(name,JSON.stringify(value));
+    		localStorage.delete(name,JSON.stringify(value));
     	}
     	localStorage.setItem(name,JSON.stringify(value));
     }
