@@ -1,7 +1,7 @@
 import Array from './Array';
 import Cookie from './Cookie';
 import DateTime from './DateTime';
-import Localstorage from './Localstorage';
+import Storage from './Storage';
 import Html from './Html';
 import Os from './Os';
 import String from './String';
@@ -11,7 +11,7 @@ import Util from './Util';
 export default {
 	Array,
 	Cookie,
-	Localstorage,
+	Storage,
 	DateTime,
 	Html,
 	Os,
