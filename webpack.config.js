@@ -1,4 +1,4 @@
-module.exports = (env = {}) => {
+module.exports = (env = {ave:true}) => {
     const path = require('path');
     const webpack = require('webpack');
     const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -86,7 +86,7 @@ module.exports = (env = {}) => {
         },
         devServer: {
             contentBase: './',
-            port: '8091'
+            port: '8090'
         },
         plugins: [
             new CleanWebpackPlugin(['dist']),

@@ -1,4 +1,4 @@
-import A360 from './A360/A360';
+import A360 from './A360/index';
 
 export default {
 	A360
