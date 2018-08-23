@@ -1,3 +1,7 @@
+/**
+ * 上报统计需用的一些公共参数 及 方法
+ * tb :  os 方法依赖于jquery
+ */
 export const getuid = () => {
     return (+new Date() +
         Math.random()
@@ -6,11 +10,18 @@ export const getuid = () => {
     )
 }
 
-export const qid = String(coo_name).indexOf('=') > -1 ? String(coo_name).split('=')[1] : String(coo_name) ;
+export const qid = (() => {
+  if(typeof(coo_name) === 'undefined'){
+    return 'null';
+  }else{
+    return String(coo_name).indexOf('=') > -1 ? String(coo_name).split('=')[1] : String(coo_name) ;
+  }
+})();
+
 
 export const nowurl = location.href.split('?')[0].split('#')[0];
 
-export const uid = typeof(global_uid) === 'undefined' ? global_uid : (+new Date()+Math.random().toString(10).substring(2, 6)) ;
+export const uid = typeof(global_uid) !== 'undefined' ? global_uid : (+new Date()+Math.random().toString(10).substring(2, 6)) ;
 
 export const os = (() => {
 	let sUserAgent = navigator.userAgent ;
@@ -40,3 +51,50 @@ export const os = (() => {
     }
     return 'other' ;
 })();
+
+export const brow = (()=>{
+    let brow = $.browser;
+    let bInfo = '非主流浏览器';
+    if (brow.msie) {bInfo = 'MicrosoftInternetExplorer' + brow.version;}
+    if (brow.mozilla) {bInfo = 'MozillaFirefox' + brow.version;}
+    if (brow.safari) {bInfo = 'AppleSafari' + brow.version;}
+    if (brow.opera) {bInfo = 'Opera' + brow.version;}
+    if (brow.chrome) {bInfo = 'chrome' + brow.version;}
+    return bInfo;
+})();
+
+export const querystring =(name) => {
+    var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if(r!=null)return  unescape(r[2]); return null;
+}
+
+export let softtype = 'toutiao';
+
+export const softname = (()=>{
+    let sn = 'DFTT';
+    const ls = querystring('listSoftName');
+    if(ls &&(typeof(otherSoftName) !== 'undefined')){
+      sn = otherSoftName + '_'+(ls === 'null' ? 'DFTT' : ls);
+    }
+    if(typeof InvokeGetPublicInfo === 'function' && InvokeGetPublicInfo()){
+      sn = 'hbzx';
+      softtype = 'hbzx';
+    }
+    return sn;
+})();
+
+export const newstype = newstype || 'null' ;
+
+export const stringify = (obj) => {
+    return obj
+      ? Object.keys(obj)
+          .map(key => {
+            const value = obj[key];
+            if (value === undefined) {return '';}
+            return encodeURI(key) + '=' + encodeURI(value);
+          })
+          .filter(x => x.length > 0)
+          .join('&')
+      : '';
+}

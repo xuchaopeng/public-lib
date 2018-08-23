@@ -6,6 +6,7 @@
  */
 import	'./Tem.less';
 import * as Tem from './Tem';
+import LianMeng from './Lianmeng';
 
 const  param360 = (showid,impct=1) => {
 	let url = 'http://show.g.mediav.com/s';
@@ -31,6 +32,7 @@ const inview = ($cnt,callback) => {
 		let win = $(window).height();
 		let rect = $cnt[0].getBoundingClientRect();
 		if(rect.top > 0 && rect.top < win){
+            callback && callback();
 			$(document).unbind('scroll',isview);
 		}
 	}
@@ -110,7 +112,7 @@ const require360 = (config) => {
             		viewurl($(item),data[i].imptk,()=>{
             			if(config.needlm === false)return;
             			//联盟曝光上报
-            			
+            			LianMeng.report({});
             		});
             		//点击、宏替换上报
             		clickHong($(item),data[i]);
