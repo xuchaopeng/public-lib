@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <link href="//mini.eastday.com/assets/images/favicon.ico" type="image/x-icon" rel="icon">
+    <script type="text/javascript" src="http://mini.eastday.com/assets/js/jquery.min.js"></script>
     <title>public-lib</title>
-  </head>
-  <body>
-  <script type="text/javascript" src="xuni/PC.js"></script>
-  </body>
+</head>
+
+<body>
+    <ul class="newlist" id="newlist">
+        <li class="item"></li>
+        <li class="item"></li>
+    </ul>
+    <!-- <script type="text/javascript" src="xuni/PC.js"></script> -->
+    <script type="text/javascript" src="xuni/PCAVE.js"></script>
+    <!-- <script type="text/javascript" src="./dist/PC.js"></script> -->
+    <script type="text/javascript">
+    PCAVE.A360.load({
+        id:'dujNK0',
+        cnt:$('.item'),
+        tpl:'template1',
+        needlm:true,
+        position:'list1_0'
+    })
+    </script>
+</body>
+
 </html>
