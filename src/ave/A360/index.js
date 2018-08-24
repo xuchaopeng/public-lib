@@ -42,7 +42,7 @@ const inview = ($cnt,callback) => {
 
 const showurl = (k) => {
 	$.each(k,(i,item)=>{
-		new Image().src = item.replace(/^(http:\/\/)|(https:\/\/)/gi,'')
+		new Image().src = item.replace(/^(http:)|(https:)/gi,'')
 	})
 }
 
@@ -75,7 +75,7 @@ const clickurl  = (urlobj) => {
 	})
 }
 
-const clickHong = ($cnt,o) =>{
+const clickHong = ($cnt,o,callback) =>{
 	const urlobj={x:'', y:'',up:'',down:'',curl:o.curl,clktk:o.clktk};
     $cnt.on('mousedown','a',function(e){
         if(e.which == 3){return;}
@@ -89,7 +89,19 @@ const clickHong = ($cnt,o) =>{
         urlobj.up = new Date().getTime();
         $this.attr('href',replace360url(urlobj.curl,urlobj));
         if (o.clktk) clickurl(urlobj);
+        callback && callback();
     });
+}
+
+const lMparam = (me,config) => {
+    return {
+        position:config.position,
+        id:config.id,
+        union:'360',
+        type:(me.type == 3 ? 'big' : me.type == 2 ? 'four' : 'one'), 
+        title:me.title,
+        url:me.curl
+    }
 }
 
 const require360 = (config) => {
@@ -108,14 +120,26 @@ const require360 = (config) => {
             		if(!data[i])return;
             		//上Dom
             		$(item).append(Tem.template1(data[i]));
-            		//曝光上报
+                    //生成联盟上报配置参数
+                    const lmparam = lMparam(data[i],config);
+            		//360曝光上报
             		viewurl($(item),data[i].imptk,()=>{
-            			if(config.needlm === false)return;
-            			//联盟曝光上报
-            			LianMeng.report({});
+            			//联盟view上报
+                        if(config.needlm !== false){
+                            LianMeng.report(lmparam,'view',()=>{});
+                        }
             		});
-            		//点击、宏替换上报
-            		clickHong($(item),data[i]);
+            		//360点击、宏替换上报
+            		clickHong($(item),data[i],()=>{
+                        //联盟click上报
+                        if(config.needlm !== false){
+                            LianMeng.report(lmparam,'click',()=>{});
+                        }
+                    });
+                    //联盟show上报
+                    if(config.needlm !== false){
+                        LianMeng.report(lmparam,'show',()=>{});
+                    }
             	})
             }
             config.callback && config.callback(data);
