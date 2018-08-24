@@ -6,7 +6,7 @@
  */
 import	'./Tem.less';
 import * as Tem from './Tem';
-import LianMeng from './Lianmeng';
+import LianMeng from '../Common/Lianmeng';
 
 const  param360 = (showid,impct=1) => {
 	let url = 'http://show.g.mediav.com/s';
@@ -124,10 +124,6 @@ const require360 = (config) => {
             console && console.log('360超时')
         }
     });
-}
-
-const  reportLM = () => {
-
 }
 
 export default {
