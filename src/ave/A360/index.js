@@ -6,7 +6,7 @@
  */
 import	'./Tem.less';
 import * as Tem from './Tem';
-import LianMeng from '../Common/Lianmeng';
+import Lianmeng from '../Common/Lianmeng';
 
 const  param360 = (showid,impct=1) => {
 	let url = 'http://show.g.mediav.com/s';

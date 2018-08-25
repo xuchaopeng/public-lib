@@ -1,4 +1,5 @@
 import { inview,getScript} from '../Common/Utils';
+import Check from './Check';
 
 const loaduid = (id, elem) => {
 	try {
@@ -103,6 +104,8 @@ const reload = (o) => {
 		default:
 			break;
 	}
+	//联盟上报
+	if(o.needlm !== false){Check.checkLM(o);}
 	typeof(o.callback) === 'function' && o.callback();
 }
 

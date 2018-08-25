@@ -15,7 +15,7 @@ import  * as Util from '../Common/Utils';
  *      'show',  // show\view\click
  *      callback)
  */
-const LianMeng = {
+const Lianmeng = {
     param(item){
         return {
             qid: Util.qid,
@@ -47,7 +47,7 @@ const LianMeng = {
             case 'view' :
                 url = '//'+host+'/dspdatalog/pcunioninview?';break;
         }
-        let param = LianMeng.param(item);
+        let param = Lianmeng.param(item);
         if(t === 'click'){item.idx ? param.idx = item.idx : ''}
         const urlstring = Util.stringify(param) ;
         new Image().src = url + urlstring;
@@ -55,4 +55,4 @@ const LianMeng = {
     }
 }
 
-export default LianMeng ;
+export default Lianmeng ;
