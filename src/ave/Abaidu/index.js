@@ -80,6 +80,8 @@ const reload = (o) => {
 	const s = "_" + Math.random().toString(36).slice(2);
 	if(o.cnt){
 		buildcnt(o.cnt,s)
+	}else{
+		document.write('<div id="'+s+'"></div>');
 	}
 	switch(o.type) {
 		case 'ssp':
