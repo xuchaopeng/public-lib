@@ -117,7 +117,12 @@ const require360 = (config) => {
             var data = res.ads || [];
             if(config.tpl === 'template1' && config.cnt.length !== 0){
             	config.cnt.each(function(i,item){
-            		if(!data[i])return;
+            		if(!data[i]){
+                        //加载百度打底广告
+                        //////////////////////////
+                        /////////////////////////
+                        return;
+                    }
             		//上Dom
             		$(item).append(Tem.template1(data[i]));
                     //生成联盟上报配置参数
@@ -146,6 +151,9 @@ const require360 = (config) => {
         },
         error: function() {
             console && console.log('360超时')
+            //加载百度打底广告
+            //////////////////////////
+            /////////////////////////
         }
     });
 }

@@ -98,3 +98,41 @@ export const stringify = (obj) => {
           .join('&')
       : '';
 }
+
+export const inview = ($cnt,callback) => {
+  const lock = false;
+  const isview = () => {
+    if($cnt.length === 0)return;
+    let win = $(window).height();
+    let rect = $cnt[0].getBoundingClientRect();
+    if(rect.top > 0 && rect.top < win){
+      callback && callback();
+      $(document).unbind('scroll',isview);
+    }
+  }
+  $(document).on('scroll',isview);
+  isview();
+}
+
+export const getScript = (url, element, callback) => {
+  let head = document.getElementsByTagName('head')[0];
+  let js = document.createElement('script');
+  js.setAttribute('type', 'text/javascript');
+  js.setAttribute('src', url);
+  element ? element.appendChild(js) : head.appendChild(js);
+  //执行回调
+  const callbackFn = () => {
+    if (typeof(callback) === 'function') {
+      callback();
+    }
+  }
+  document.all ?
+    js.onreadystatechange = () => {
+      if (js.readyState === 'loaded' || js.readyState === 'complete') {
+        callbackFn()
+      }
+    } :
+    js.onload = () => {
+      callbackFn();
+    }
+}
