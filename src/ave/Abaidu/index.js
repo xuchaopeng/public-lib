@@ -74,7 +74,6 @@ const buildcnt = (cnt,s) => {
 	}
 }
 
-
 const reload = (o) => {
 	if (!o.id || !o.type) return;
 	const s = "_" + Math.random().toString(36).slice(2);
