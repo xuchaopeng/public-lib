@@ -18,7 +18,6 @@ export const qid = (() => {
   }
 })();
 
-
 export const nowurl = location.href.split('?')[0].split('#')[0];
 
 export const uid = typeof(global_uid) !== 'undefined' ? global_uid : (+new Date()+Math.random().toString(10).substring(2, 6)) ;

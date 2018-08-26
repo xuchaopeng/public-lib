@@ -131,19 +131,19 @@ const require360 = (config) => {
             		viewurl($(item),data[i].imptk,()=>{
             			//联盟view上报
                         if(config.needlm !== false){
-                            LianMeng.report(lmparam,'view',()=>{});
+                            Lianmeng.report(lmparam,'view',()=>{});
                         }
             		});
             		//360点击、宏替换上报
             		clickHong($(item),data[i],()=>{
                         //联盟click上报
                         if(config.needlm !== false){
-                            LianMeng.report(lmparam,'click',()=>{});
+                            Lianmeng.report(lmparam,'click',()=>{});
                         }
                     });
                     //联盟show上报
                     if(config.needlm !== false){
-                        LianMeng.report(lmparam,'show',()=>{});
+                        Lianmeng.report(lmparam,'show',()=>{});
                     }
             	})
             }
