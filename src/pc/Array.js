@@ -12,6 +12,24 @@ if (!Array.prototype.contains) {
     }
   };
 }
+/**
+ * 扩展Array对象的方法
+ * @param  {[type]} item 指定值
+ * @return {[type]}      [description]
+ */
+if(!Array.prototype.map){
+  Array.prototype.map = function(callback,context){
+    var na = [];
+    for(var i = 0,len = this.length; i < len;i++) {
+        if(typeof  callback === 'function') {
+            var val = callback.call(context,this[i],i,this);
+            na[na.length] = val;
+        }
+    }
+    return na;
+  }
+}
+
 export default {
   /**
    * 获取数组1中排除数组2中的值之后的数组

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="UTF-8">
     <link href="//mini.eastday.com/assets/images/favicon.ico" type="image/x-icon" rel="icon">
@@ -10,41 +9,127 @@
     <title>public-lib</title>
 </head>
 
-<body>
+<body style="height:3000px">
     <ul class="newlist">
         <li class="item"></li>
         <li class="item"></li>
     </ul>
-    <div id="xcp"></div>
+    <div id="xf">
+    </div>
+    <div id="dl">
+    </div>
+    <div id="st1">
+    </div>
+    <div id="st2">
+    </div>
+    <div id="st3"  style="position:fixed;bottom:0;right:0">
+    </div>
+    <div id="bx">
+    </div>
+    <ul style="width:670px">
+        <li>
+           <div id="flow"></div>
+        </li>
+        <li>
+           <div id="flow1"></div>
+        </li>
+        <li>
+           <div id="flow2"></div>
+        </li>
+        <li>
+           <div id="flow3"></div>
+        </li>
+        <li>
+           <div id="flow4"></div>
+        </li>
+    </ul>
+    <div id="btxf">
+    </div>
     <!-- <script type="text/javascript" src="xuni/PC.js"></script> -->
     <script type="text/javascript" src="xuni/PCAVE.js"></script>
     <!-- <script type="text/javascript" src="./dist/PC.js"></script> -->
     <script type="text/javascript">
+        //注册本页面所有的dsp广告位
         PCAVE.Adsp.load({
             site:'ttz',
             page:'ny',
-            pcad:'ny_right1|ny_right2|ny_rmtj_v1|ny_rmtj_v2',
+            pcad:'ny_btxf|ny_rmtj_v1|ny_rmtj_v2|ny_rmtj_v3|ny_rmtj_v4|ny_dl|ny_y1|ny_y2|ny_yxxf',
             callback:()=>{}
         })
+        //使用的dsp方式
+        PCAVE.Adsp.use({
+            cnt:$('#dl'),
+            pcad:'ny_dl',
+            tpl:'dl',
+            callback:()=>{}
+        });
+        PCAVE.Adsp.use({
+            cnt:$('#st1'),
+            pcad:'ny_y1',
+            tpl:'th',
+            callback:()=>{}
+        });
+        PCAVE.Adsp.use({
+            cnt:$('#st2'),
+            pcad:'ny_y2',
+            tpl:'th',
+            callback:()=>{}
+        });
+        PCAVE.Adsp.use({
+            cnt:$('#st3'),
+            pcad:'ny_yxxf',
+            tpl:'xf',
+            callback:()=>{}
+        });
+        PCAVE.Adsp.use({
+            cnt:$('#flow1'),
+            pcad:'ny_rmtj_v1',
+            tpl:'sw',
+            callback:()=>{}
+        });
+        PCAVE.Adsp.use({
+            cnt:$('#flow2'),
+            pcad:'ny_rmtj_v2',
+            tpl:'sw',
+            callback:()=>{}
+        });
+        PCAVE.Adsp.use({
+            cnt:$('#flow3'),
+            pcad:'ny_rmtj_v3',
+            tpl:'sw',
+            callback:()=>{}
+        });
+        PCAVE.Adsp.use({
+            cnt:$('#flow4'),
+            pcad:'ny_rmtj_v4',
+            tpl:'sw',
+            callback:()=>{}
+        });
+        PCAVE.Adsp.use({
+            cnt:$('#btxf'),
+            pcad:'ny_btxf',
+            tpl:'bx',
+            callback:()=>{}
+        });
     </script>
     <script type="text/javascript">
-        /*PCAVE.A360.load({
+        PCAVE.A360.load({
             id:'dujNK0',
             cnt:$('.item'),
             tpl:'template1',
             needlm:true,
             position:'xcp_rihgt'
-        })*/
+        })
     </script>
     <script type="text/javascript">
-        /*PCAVE.Abaidu.load({
+        PCAVE.Abaidu.load({
             id:'lgymcoivhjn',//必传
             type:'bdf', //必传
-            position:'xcp_haha',//需联盟上报 改参数必传 否则可不传
+            position:'xcp_haha',//如果需联盟上报,改参数必传;否则可不传
             cnt:'xcp', //可不传  支持id、$对象
             needlm:false, //设置是否需要联盟统计 默认为true 可不传
             callback:function(){} //可不传
-        })*/
+        })
     </script>
 </body>
 
