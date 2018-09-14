@@ -61,7 +61,10 @@
             cnt:$('#dl'),
             pcad:'ny_dl',
             tpl:'dl',
-            callback:()=>{}
+            time:10,
+            callback:(a)=>{
+                if(a)return;
+            }
         });
         PCAVE.Adsp.use({
             cnt:$('#st1'),
@@ -116,7 +119,7 @@
         PCAVE.A360.load({
             id:'dujNK0',
             cnt:$('.item'),
-            tpl:'template1',
+            tpl:'sw',
             needlm:true,
             position:'xcp_rihgt'
         })

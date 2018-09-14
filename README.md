@@ -51,19 +51,19 @@ PC.Url.getUrlNoParams();
 
 ## 派生本仓库
 
-```python
-git clone http://codeio.dftoutiao.com/xuchaopeng/public-lib.git
+```
+git clone http://codeio.dftoutiao.com/DFTTPC/public-lib
 cd public-lib
 npm install
 ```
 ## 打包
-```python
+```
 npm run dev # 开发环境
 npm run build # 生产环境
 ```
 
 ## 测试
-```python
+```
 npm run test
 ```
 # 项目说明

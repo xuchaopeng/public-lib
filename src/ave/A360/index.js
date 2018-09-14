@@ -5,7 +5,7 @@
  * 本库完全依赖于jQuery
  */
 import	'./Tem.less';
-import * as Tem from './Tem';
+import * as Tpl from './Tem';
 import Lianmeng from '../Common/Lianmeng';
 
 const  param360 = (showid,impct=1) => {
@@ -106,6 +106,8 @@ const lMparam = (me,config) => {
 
 const require360 = (config) => {
 	const p = param360(config.id,config.cnt.length);
+    const tpl = Tpl[config.tpl];
+    if(!tpl){console && console.log('tpl模板配置错误');return;}
     $.ajax({
         type: 'GET',
         url: p.url,
@@ -115,7 +117,7 @@ const require360 = (config) => {
         timeout: 2500,
         success: function(res) {
             var data = res.ads || [];
-            if(config.tpl === 'template1' && config.cnt.length !== 0){
+            if(config.cnt.length !== 0){
             	config.cnt.each(function(i,item){
             		if(!data[i]){
                         //加载百度打底广告
@@ -124,7 +126,7 @@ const require360 = (config) => {
                         return;
                     }
             		//上Dom
-            		$(item).append(Tem.template1(data[i]));
+            		$(item).append(tpl(data[i]));
                     //生成联盟上报配置参数
                     const lmparam = lMparam(data[i],config);
             		//360曝光上报

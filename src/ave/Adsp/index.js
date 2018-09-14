@@ -142,19 +142,23 @@ const checkMe = (item,p) => {
 		Utils.inview(p.cnt,function(){
 			if(item.viewurls)ImgReport(item.viewurls);
 		});
+		p.callback &&  p.callback(1);
 		if(item.showurls)ImgReport(item.showurls);
+		return;
 	}
+	p.callback &&  p.callback(0);
 }
 
 const reItem = (p) => {
 	if(!p.pcad)return;
 	let t = 0 ;
+	const num = p.time ? p.time : 15 ;
 	if(AdspData[p.pcad].isdata == 1){
 		checkMe(AdspData[p.pcad],p);return;
 	}
 	const timer = setInterval(()=>{
 		t ++ ;
-		if(t > 15){clearInterval(timer);return;}
+		if(t > num){clearInterval(timer);return;}
 		if(AdspData[p.pcad].isdata == 1){
 			clearInterval(timer);
 			checkMe(AdspData[p.pcad],p);
