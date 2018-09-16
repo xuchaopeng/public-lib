@@ -33,8 +33,16 @@ PC.Url.getUrlNoParams();
 ├──src
 |   ├──ave                     // 广告库文件
 |   |  ├──A360                 //360广告
+|   |  |    ├──Tem.js          //360广告模板
+|   |  |    ├──Tem.less        //360广告模板样式
+|   |  |    ├──index.js        //实现主要逻辑
 |   |  ├──Abaidu               //百度联盟
+|   |  |    ├──Check.js        //检查联盟类型
+|   |  |    ├──index.js        //实现主要逻辑
 |   |  ├──Adsp                 //dsp广告
+|   |  |    ├──Tem.js          //dsp广告模板
+|   |  |    ├──Tem.less        //dsp广告模板样式
+|   |  |    ├──index.js        //实现主要逻辑
 |   |  ├──index.js             //广告库的入口文件
 |   ├──pc
 |   |  ├──*.js                 //pc公共方法文件
