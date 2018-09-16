@@ -48,34 +48,36 @@ PCAVE.A360.load({
     callback:function(a){} //非必传
 })
 备注：
- *. tpl 必传，指广告素材渲染使用的模板类型。 目前支持常见的几种：th（300*250四图模板）、sw（信息流模板四图、单图、无图、大图模板)、bx（文章下方式四图模板），现有不满足要求，你可以在/src/ave/A360/Tem 中自定义模板。
+ *. tpl 必传，指广告素材渲染使用的模板类型。 目前支持常见的几种：th（300*250四图模板）、sw（信息流模板四图、单图、无图、大图模板)、bx（文章下方式四图模板）；
+  现有不满足要求，你可以在/src/ave/A360/Tem 中自定义模板。
  *. reqtimes 非必传，指页面该广告素材请求次数。一般信息流需要传 其它默认为1。
  *. position 非必传，指广告位标识。当needlm=true 该参数必传; 当needlm=false 该参数可不传; 当needlm=false且tpl=th该参数必传，作为该容器唯一的key。
  *. impct 非必传。当该参数不设置,它会自动分析容器的长度或者渲染tpl来赋值。
  *. recover 非必传，指360打底广告配置项。
- 	recover ： {
-		id:'lgymcoivhjn',//必传
-        type:'bdf', //必传
-        needlm:true //非必传
- 	}
+ recover ： {
+ 	id:'lgymcoivhjn',//必传
+    type:'bdf', //必传
+    needlm:true //非必传
+ }
  *. callback 非必传，回调。回调参数值为360广告素材对象，如果请求不合预期，则回调参数值为null；因此需打底广告，除了设置recover，还可以在
  回调中设置打底广告。
 ```
 ```
 dsp广告使用方法，以PCAVE为例:
 
-o. 优先注册本页面所有的dsp广告位
+1. 优先注册本页面所有的dsp广告位
 PCAVE.Adsp.load({
     site:'ttz',
     page:'ny',
     pcad:'ny_btxf|ny_rmtj_v1|ny_dl|ny_y1|ny_yxxf',
     callback:()=>{}
 })
-*. site 必传，站点。
-*. page 必传，页面类型。
-*. pcad 必传，由页面dsp广告的pcadposition（后台接口设置，广告位唯一标识）组成。
+备注：
+ *. site 必传，站点。
+ *. page 必传，页面类型。
+ *. pcad 必传，由页面dsp广告的pcadposition（后台接口设置，广告位唯一标识）组成。
 
-o. 注册之后，通过以下方式来渲染广告
+2. 注册之后，通过以下方式来渲染广告
 PCAVE.Adsp.use({
     cnt:$('#dl'), //必传，广告位容器
     pcad:'ny_dl',
@@ -83,10 +85,12 @@ PCAVE.Adsp.use({
     time:10,
     callback:(a)=>{}
 })
-*. pcad 必传，dsp广告标识。用来找到对应的dsp广告位数据
-*. tpl 必传，dsp渲染模板。目前支持常见几种：th（300*250四图模板）、sw（信息流模板四图、单图、无图、大图模板)、dl（对联）、xf（悬浮）、bx(文章下方式四图模板);现有不满足要求，你可以在/src/ave/Adsp/Tem 中自定义模板。
-*. time 非必传，dsp检测等待。默认15
-*. recover 非必传，指dsp打底广告配置项。
+备注：
+ *. pcad 必传，dsp广告标识。用来找到对应的dsp广告位数据
+ *. tpl 必传，dsp渲染模板。目前支持常见几种：th（300*250四图模板）、sw（信息流模板四图、单图、无图、大图模板)、dl（对联）、xf（悬浮）、bx(文章下方式四图模板);
+  现有不满足要求，你可以在/src/ave/Adsp/Tem 中自定义模板。
+ *. time 非必传，dsp检测等待。默认15
+ *. recover 非必传，指dsp打底广告配置项。
   recover ： {
   	avetype:'baidu', //必传 360打底/百度打底  360、baidu
 	id:'lgymcoivhjn',//必传 360/baidu的广告对应id
@@ -97,7 +101,7 @@ PCAVE.Adsp.use({
     position:'right_1' //
   }
   其实recover参数配置除了avetype，其它可参照相对应打底广告参数。
-*. callback 非必传，回调。回调参数值为dsp广告素材对象，如果请求不合预期，则回调参数值为null；
+ *. callback 非必传，回调。回调参数值为dsp广告素材对象，如果请求不合预期，则回调参数值为null；
 ```
 # 项目结构描述
 
