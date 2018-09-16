@@ -44,9 +44,7 @@ const loadBDF = (id,s) => {
 	const domain = '//df666.pzhttaax.cn/';
 	const url = domain + id + '.js';
 	const element = buildYs(s);
-	getScript(url,element,()=>{
-		console.log('success');
-	})
+	getScript(url,element,()=>{})
 }
 
 const buildYs = (s) => {

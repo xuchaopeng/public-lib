@@ -45,6 +45,7 @@
     </ul>
     <div id="btxf">
     </div>
+    <div id="xcp"></div>
     <!-- <script type="text/javascript" src="xuni/PC.js"></script> -->
     <script type="text/javascript" src="xuni/PCAVE.js"></script>
     <!-- <script type="text/javascript" src="./dist/PC.js"></script> -->
@@ -57,7 +58,7 @@
             callback:()=>{}
         })
         //使用的dsp方式
-        PCAVE.Adsp.use({
+        /*PCAVE.Adsp.use({
             cnt:$('#dl'),
             pcad:'ny_dl',
             tpl:'dl',
@@ -70,12 +71,28 @@
             cnt:$('#st1'),
             pcad:'ny_y1',
             tpl:'th',
+            recover:{
+                avetype:'baidu',
+                id:'lgymcoivhjn',//必传
+                type:'bdf', //必传
+                needlm:true,
+                position:'right_1'
+            },
             callback:()=>{}
         });
+
         PCAVE.Adsp.use({
             cnt:$('#st2'),
             pcad:'ny_y2',
             tpl:'th',
+            recover:{
+                avetype:'360',
+                id:'lqsYyv',//必传
+                tpl:'th',
+                impct:4,
+                needlm:true,
+                position:'right_2'
+            },
             callback:()=>{}
         });
         PCAVE.Adsp.use({
@@ -113,16 +130,55 @@
             pcad:'ny_btxf',
             tpl:'bx',
             callback:()=>{}
-        });
+        });*/
     </script>
+    <div>
+        <ol>
+            <li class="xcp"></li>
+            <li class="xcp"></li>
+            <li class="xcp"></li>
+            <li class="xcp"></li>
+            <li class="xcp"></li>
+            <li class="xcp"></li>
+        </ol>
+    </div>
     <script type="text/javascript">
         PCAVE.A360.load({
-            id:'dujNK0',
-            cnt:$('.item'),
-            tpl:'sw',
+            id:'coDKeS', //广告素材请求id
+            cnt:$('.item'), //广告容器 -- 一般传jq对象安全些
+            tpl:'sw',   //广告渲染模板 -- th:300*250四图模板;sw:信息流模板(四图、单图、无图、大图模板)
+            reqtimes:1, //页面该广告素材请求次数 -- 一般信息流需传 其它默认为1
+            needlm:true, //是否需要联盟上报
+            impct:2, //一次请求广告期望返回素材的数量 -- 该参数可不传，当该参数不设置,它会自动分析容器的长度/渲染tpl来赋值
+            position:'xcp_rihgt' //广告位标识 -- 1、当needlm=true 该参数必传; 2、当needlm=false 该参数可不传; 3、当needlm=false且tpl=th 该参数必传，作为该容器唯一的key;
+        });
+        PCAVE.A360.load({
+            id:'lqsYyv',
+            cnt:$('.xcp').eq(0),
+            tpl:'th',
             needlm:true,
-            position:'xcp_rihgt'
-        })
+            position:'xcp_123',
+            recover:{
+                id:'lgymcoivhjn',//必传
+                type:'bdf', //必传
+                needlm:true
+            },
+            callback:(a)=>{}
+        });
+        PCAVE.A360.load({
+            id:'lqsYyv',
+            cnt:$('.xcp').eq(1),
+            tpl:'bx',
+            impct:4,
+            needlm:true,
+            position:'xcp_345',
+            recover:{
+                id:'lgymcoivhjn',//必传
+                type:'bdf', //必传
+                needlm:true
+            },
+            callback:(a)=>{console.log(a)}
+        });
     </script>
     <script type="text/javascript">
         PCAVE.Abaidu.load({

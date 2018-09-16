@@ -1,9 +1,10 @@
 import * as Utils from '../Common/Utils';
 import Cookie from '../../pc/Cookie';
+import Abaidu from '../Abaidu/index';
+import A360 from '../A360/index';
 import '../Common/reset.css';
 import './Tem.less';
 import * as Tpl from './Tem';
-// import '../Common/haha.css';
 
 const creatData = (o) => {
 	if (!o.site || !o.page || !o.pcad) {
@@ -76,7 +77,6 @@ const paramDsp = (o) => {
 	}
 }
 
-
 const reload = (o) => {
 	cunlishi();
 	creatData(o);
@@ -90,7 +90,6 @@ const reload = (o) => {
         timeout: 4000,
         success:function(res){
         	const d = res.data ? res.data : [];
-        	console.log(res);
             if (d.length === 0)return;
             $.each(d,(k,v) => {
             	const pcad = v.pcadposition;
@@ -130,7 +129,6 @@ const ImgReport = (a) => {
 const checkMe = (item,p) => {
 	const tpl = Tpl[p.tpl];
 	if(item.hasdata == 1 && tpl){
-		console.log(item,'xcp')
 		p.cnt.append(tpl(item));
 		p.cnt.on('click','.avedsp-hideicon',function(){
 			if(item.closeurls)ImgReport(item.closeurls);
@@ -146,7 +144,35 @@ const checkMe = (item,p) => {
 		if(item.showurls)ImgReport(item.showurls);
 		return;
 	}
-	p.callback &&  p.callback(0);
+	p.callback &&  p.callback(null);
+	//处理打底广告
+	if(!p.recover)return;
+	if(p.recover.avetype === 'baidu'){loadBaidu(p);return;}
+	if(p.recover.avetype === '360'){load360(p);return;}
+	console && console.log('打底avetype类型设置错误');
+}
+
+const loadBaidu = (config,$cnt) => {
+    Abaidu.load({
+        id:config.recover.id,
+        type:config.recover.type,
+        position:config.recover.position || config.position,
+        cnt:$cnt || config.recover.cnt || config.cnt,
+        needlm:config.recover.needlm || config.needlm,
+        callback:config.recover.callback || null
+    })
+}
+
+const load360 = (config,$cnt) => {
+	A360.load({
+	    id:config.recover.id,
+	    cnt:$cnt || config.recover.cnt || config.cnt,
+	    tpl:config.recover.tpl || config.tpl,
+	    reqtimes:config.recover.reqtimes || null,
+	    needlm:config.recover.needlm || config.needlm || true,
+	    impct:config.recover.impct || 1,
+	    position:config.recover.position || config.position || null
+	});
 }
 
 const reItem = (p) => {

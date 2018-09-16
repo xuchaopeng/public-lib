@@ -20,7 +20,7 @@ export const sw = (value) => {
 				<div class="new-situ">
 	                <h3><a href="${value.curl}" target="_blank">${value.title}</a></h3>
 	                <p class="img-wrap clearfix">
-	                	${value.assets.map(imglist => `<a class="fl" href="${imglist.curl}" target="_blank" ><img src="${imglist.img}" alt="" ></a>`)}
+	                	${value.assets.map(imglist => `<a class="fl" href="${imglist.curl}" target="_blank" ><img src="${imglist.img}" alt="" ></a>`).join('')}
 	                </p>
 	                <p class="from"><a href="${value.curl}" target="_blank" >${value.src}<span class="date">广告</span></a></p>
 	            </div>`.trim();break;
@@ -38,15 +38,37 @@ export const sw = (value) => {
 }
 
 /**
- * 300 * 250 尺寸360模板
+ * 300 * 250 尺寸360模板 4图：多个单图广告组成的广告位
  */
-export const th = (value) => {
+export const th = (moredata) => {
 	return `<div class="ave360-situ">
 				<div class="situ-cnt">
-					${[0,1,2,3].map((item,index)=>{
-						return `<div class="situ-item ${index==1||index==3 ? 'nomar':''}"><div class="situ-img"><a href="${value.url}" target="_blank"><img src="${value.miniimg[index] ? value.miniimg[index].src : value.miniimg[0].src}" alt=""></a></div><a class="situ-text" href="${value.url}" target="_blank">${topicArr[index] ? topicArr[index]:topicArr[0]}</a></div>`.trim();
+					${moredata.map((value,index)=>{
+						return `<div class="situ-item ${index==1||index==3 ? 'nomar':''} isave360-cnt"><div class="situ-img"><a href="${value.curl}" target="_blank"><img src="${value.img}" alt=""></a></div><a class="situ-text" href="${value.curl}" target="_blank">${value.title}</a></div>`.trim();
 					}).join('')}
-					<a class="avedsp-icon">广告<i>：${value.source.slice(0, 4)}</i></a>
+					<a class="avedsp-icon">广告</a>
 				</div>
 		</div>`.trim();
+}
+
+/**
+* 四图正文下方模板
+*/
+export const bx = (moredata) => {
+	return `<div class="ave360-bxsitu">
+		<div class="bxsitu-cnt">
+			${moredata.map((value,index)=>{
+				return `<div class="bxsitu-item ${index==3?'noma':''} isave360-cnt">
+							<div class="bxsitu-img">
+								<a href="${value.curl}" target="_blank">
+									<img src="${value.img}" alt="" />
+								</a>
+							</div>
+							<span class="bxsitu-pop"></span>
+							<a class="bxsitu-text" href="${value.curl}" target="_blank">${value.title}</a>
+						</div>`.trim()
+			}).join('')}
+			<a class="ave360-righticon">广告</a>
+		</div>
+	</div>`.trim();
 }

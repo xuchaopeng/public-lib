@@ -221,6 +221,11 @@
 		    .situ-img{
 		    	width:100%;
 		    	height:85px;
+		    	a{
+		    		display: block;
+		    		width:100%;
+		    		height:100%;
+		    	}
 		    	img{
 		    		width:100%;
 		    		height:100%;
@@ -240,4 +245,117 @@
 		    }
 	    }
 	}
+}
+//正文、标题下方广告
+.ave360-bxsitu{
+	width:640px;
+	height:90px;
+	position: relative;
+	overflow: hidden;
+	.bxsitu-cnt{
+		width:100%;
+		height: 100%;
+		.bxsitu-item{
+			float: left;
+		    width: 152px;
+		    height: 100%;
+		    margin-right: 10px;
+		    position: relative;
+		    &.noma{
+		    	margin-right:0;
+		    }
+		    .bxsitu-img{
+				width:100%;
+				height:100%;
+				img{
+			    	width:100%;
+			    	height:100%;
+			    	border:0;
+			    }
+		    }
+		    .bxsitu-pop{
+				display: block;
+			    position: absolute;
+			    bottom: 0;
+			    left: 0;
+			    height: 20px;
+			    width: 100%;
+			    background-color: #000;
+			    opacity: .4;
+			    filter: alpha(opacity=40);
+		    }
+		    .bxsitu-text{
+		    	position: absolute;
+			    bottom: 0;
+			    left: 0;
+			    display: block;
+			    width: 100%;
+			    height: 20px;
+			    font-size: 12px;
+			    text-align: center;
+			    color: #fff;
+			    text-decoration: none;
+			    overflow: hidden;
+			    &:hover{
+			    	color:#ee4b4b;
+			    }
+		    }
+		}
+		.ave360-righticon{
+			right:2px;
+		}
+	}
+}
+//广告图标
+.ave360-icon{
+	position: absolute;
+    right: 0;
+    top: 0;
+    height: 17px;
+    font-size: 12px;
+    color: #fff;
+    line-height: 17px;
+    text-align: center;
+    padding: 0 3px;
+    background-color: #000;
+    opacity: .6;
+    filter: alpha(opacity=60);
+    i {
+    	color: #fff;
+    	display: none;
+    }
+    &:hover{
+    	color: #fff;
+    	i{
+    		display: inline;
+    	}
+    }
+}
+//右上放广告标识
+.ave360-righticon{
+	position: absolute;
+	top:0;
+	right:0;
+	height: 17px;
+    font-size: 12px;
+    color: #fff;
+    line-height: 17px;
+    text-align: center;
+    padding: 0 3px;
+    background-color: #000;
+    opacity: .3;
+    filter: alpha(opacity=30);
+    i {
+    	color: #fff;
+    	display: none;
+    }
+    &:hover{
+    	color: #fff;
+    	i{
+    		display: inline;
+    	}
+    }
+    .avedsp-icon{
+
+    }
 }

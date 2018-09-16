@@ -104,7 +104,7 @@ export const inview = ($cnt,callback) => {
     if($cnt.length === 0)return;
     let win = $(window).height();
     let rect = $cnt[0].getBoundingClientRect();
-    if(rect.top > 0 && rect.top < win){
+    if((rect.top > 0 && rect.top < win) || (rect.bottom < win && rect.bottom > 0)){
       callback && callback();
       $(document).unbind('scroll',isview);
     }
