@@ -50,18 +50,18 @@ PCAVE.A360.load({
     position:'xcp_rihgt' //广告位标识 -- 
 })
 备注：
-	o.当needlm=true 该参数必传; 当needlm=false 该参数可不传; 当needlm=false且tpl=th 该参数必传，作为该容器唯一的key。
-	o.reqtimes 指页面该广告素材请求次数。一般信息流需要传 其它默认为1。
+ *. 当needlm=true 该参数必传; 当needlm=false 该参数可不传; 当needlm=false且tpl=th 该参数必传，作为该容器唯一的key。
+ *. reqtimes 指页面该广告素材请求次数。一般信息流需要传 其它默认为1。
 
 3、dsp广告
-o.优先注册本页面所有的dsp广告位
+o. 优先注册本页面所有的dsp广告位
 PCAVE.Adsp.load({
     site:'ttz',
     page:'ny',
     pcad:'ny_btxf|ny_rmtj_v1|ny_rmtj_v2|ny_rmtj_v3|ny_rmtj_v4|ny_dl|ny_y1|ny_y2|ny_yxxf',
     callback:()=>{}
 })
-o.注册之后，通过以下方式来渲染广告
+o. 注册之后，通过以下方式来渲染广告
 PCAVE.Adsp.use({
     cnt:$('#dl'),
     pcad:'ny_dl',
