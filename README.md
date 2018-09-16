@@ -13,19 +13,45 @@ cd public-lib && npm install && npm run build
 如果觉得有些方法基本用不到，可以通过修改/src/(ave|pc)/index.js，import需要的 js 即可。
 
 ## 公共方法库使用
-```python
-<!-- html中直接引入 -->
-<script src="PC.js"></script>
 ```
-```python
+<!-- html中直接引入 -->
+<script src="PCAVE.js"></script>
+这种方式引入将会直接暴露PCAVE对象，如果需要更改，可以在webpack.config.js中修改即可。
+```
+```
 // AMD引入
-var PC = require('PC');
+var PCAVE = require('PCAVE');
 
 // ES6 Module引入
-import PC from 'PC';
+import PCAVE from 'PCAVE';
+```
+```
+//使用方法
+以PCAVE为例:
 
-// 使用方法
-PC.Url.getUrlNoParams();
+1、百度联盟
+PCAVE.Abaidu.load({
+    id:'lgymcoivhjn',//必传
+    type:'bdf', //必传
+    position:'xcp_haha',//如果需联盟上报,该参数必传;否则可不传
+    cnt:'xcp', //可不传  支持id、$对象
+    needlm:false, //设置是否需要联盟统计 默认为true 可不传
+    callback:function(){} //可不传
+})
+
+2、360广告
+PCAVE.A360.load({
+    id:'coDKeS', //广告素材请求id
+    cnt:$('.item'), //广告容器 -- 一般传jq对象安全些
+    tpl:'sw',   //广告渲染模板 -- th:300*250四图模板;sw:信息流模板(四图、单图、无图、大图模板)
+    reqtimes:1, //页面该广告素材请求次数 -- 一般信息流需传 其它默认为1
+    needlm:true, //是否需要联盟上报
+    impct:2, //一次请求广告期望返回素材的数量 -- 该参数可不传，当该参数不设置,它会自动分析容器的长度/渲染tpl来赋值
+    position:'xcp_rihgt' //广告位标识 -- 1、当needlm=true 该参数必传; 2、当needlm=false 该参数可不传; 3、当needlm=false且tpl=th 该参数必传，作为该容器唯一的key;
+})
+
+3、dsp广告
+
 ```
 # 项目结构描述
 
@@ -47,7 +73,7 @@ PC.Url.getUrlNoParams();
 |   ├──pc
 |   |  ├──*.js                 //pc公共方法文件
 |   |  ├──index.js             //公共方法库的入口文件
-├──dist                        //wepack打包后文件 
+├──dist                        //wepack打包后文件
 ├──.gitignore                  // 忽略的文件的配置文件
 ├──package.json                // 项目及工具的依赖配置文件
 ├──postcss.config.js            //css3打包兼容性前缀的配置文件
